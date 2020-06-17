@@ -1,0 +1,17 @@
+﻿@model Bakkal.Models.Bakkallar
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<body>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+        <a href="/MusteriBakkal/Goster/@ViewBag.aydi" class="btn btn-info col-sm-4">Seç</a>
+        }
+        </div>
+</body>
+</html>
+

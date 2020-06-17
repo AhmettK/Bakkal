@@ -1,0 +1,59 @@
+﻿@model Bakkal.Models.Urunler
+@{
+    ViewBag.Title = "Goster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<body>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @*<div class="col-md-3">
+                    @Html.DropDownListFor(i => Model.Kategori1, (List<SelectListItem>)ViewBag.kat, new { @class="form-control"})<br />
+                    <input type="submit" class="form-control" />
+                </div>*@
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th scope="col"> </th>
+                            <th scope="col">Ürün Kategorisi</th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Ürün Fiyatı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.tablo)
+                        {
+                            <tr class="bg-info">
+                                @if (@item.UrunKategorisi == "Ev/Kişisel İhtiyaçlar")
+                                {
+                                    <th style="width:100px"><img style="width:100%" src="~/Resim/temizlik.jpeg" /></th>
+                                }
+                                @if (@item.UrunKategorisi == "İçecek")
+                                {
+                                    <th style="width:100px"><img style="width:100%" src="~/Resim/icecek.jpeg" /></th>
+                                }
+                                @if (@item.UrunKategorisi == "Gıda Maddeleri")
+                                {
+                                    <th style="width:100px"><img style="width:100%" src="~/Resim/yemeklik.jpeg" /></th>
+                                }
+                                @if (@item.UrunKategorisi == "Atıştırmalık")
+                                {
+                                    <th style="width:100px"><img style="width:100%" src="~/Resim/snacks.jpeg" /></th>
+                                }
+                                <th>@item.UrunKategorisi</th>
+                                <th>@item.UrunAdi</th>
+                                <th>@item.UrunFiyati ₺</th>
+                                <th><a href="/Sepet/Sec/@item.UrunId" class="glyphicon glyphicon-plus"></a></th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</body>
+</html>

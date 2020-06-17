@@ -1,0 +1,86 @@
+﻿@model Bakkal.Models.Login
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <style>
+        .login-page {
+            width: 360px;
+            padding: 8% 0 0;
+            margin: auto;
+        }
+
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+            .form input {
+                font-family: "Roboto", sans-serif;
+                outline: 0;
+                background: #f2f2f2;
+                width: 100%;
+                border: 0;
+                margin: 0 0 15px;
+                padding: 15px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+            .form button {
+                font-family: "Roboto", sans-serif;
+                text-transform: uppercase;
+                outline: 0;
+                background: #4CAF50;
+                width: 100%;
+                border: 0;
+                padding: 15px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="login-page">
+        @using (Html.BeginForm())
+        {
+            <div class="form">
+                <form class="login-form">
+                    <h3>Giriş Yap</h3><hr />
+                    <h4 style="position:absolute;top:120px;left:100px">Bakkal :</h4>@Html.RadioButtonFor(i => Model.Tip, "1")
+                    <h4 style="position:absolute;top:150px;left:100px">Müşteri:</h4>@Html.RadioButtonFor(i => Model.Tip, "2")
+                    @Html.TextBoxFor(i => Model.KullaniciAdi, new { @Placeholder = "Kullanıcı Adı" })
+                    @Html.PasswordFor(i => Model.Sifre, new { @Placeholder = "Şifre" })
+                    <input type="submit" value="Giriş" style="background-color:powderblue" />
+                    <hr>
+                    @if (ViewBag.fail != null && ViewBag.fail)
+                    {
+                        <div id="wrapper">
+                            <div id="message-sent">
+                                <span style="color:red">Hatalı kullanıcı adı veya şifre.</span>
+                            </div>
+                        </div>
+                    }
+                    <p class="message">Hesabın yok mu? <a href="http://localhost:49837/SignUp/Index">Hesap oluştur</a></p>
+                </form>
+            </div>
+        }
+    </div>
+</body>
+
+</html>
+

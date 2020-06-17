@@ -1,0 +1,80 @@
+﻿@using Bakkal.Models
+@model List<Sepet>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<body>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>Ürün Adı</th>
+                        <th>Bakkal Adı</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Ekle</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr class="bg-info">
+                        <th>@item.UrunAdi</th>
+                        @if (item.Bakkal_Id == 1)
+                        {
+                            <th>XBakkal</th>
+                        }
+                        @if (item.Bakkal_Id == 3)
+                        {
+                            <th>YBakkal</th>
+                        }
+                        @if (item.Bakkal_Id == 4)
+                        {
+                            <th>ZBakkal</th>
+                        }
+                        <th>@item.UrunFiyati ₺</th>
+                        <th><a href="/Sepet/Arttir/@item.SepetId" class="btn btn-success">Ekle</a></th>
+                        <th><a href="/Sepet/Sil/@item.SepetId" class="btn btn-danger">Sil</a></th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>Ürünlerin Toplamı</th>
+                        <th>+</th>
+                        <th>Sipariş Ücreti</th>
+                        <th>=</th>
+                        <th>Toplam Tutar</th>
+                        <th>Onayla</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-info">
+                        <th>@ViewBag.tutar</th>
+                        <th>+</th>
+                        <th>@ViewBag.uc</th>
+                        <th>=</th>
+                        <th>@ViewBag.top</th>
+                        @if (ViewBag.u == 1)
+                        {
+                            <th><a href="/Sepet/Onay/@ViewBag.onay" class="btn btn-info col-sm-4">Onayla</a></th>
+                        }
+                        @if (ViewBag.u != 1)
+                        {
+                            <th><p>Yalnızca bir bakkal seçiniz!!!</p></th>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+</body>
+</html>
+
