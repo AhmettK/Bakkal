@@ -1,0 +1,60 @@
+﻿@model Bakkal.Models.Bakkallar
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <style>
+        .jumbotron {
+            background-image: url("https://previews.123rf.com/images/mikalaimanyshau/mikalaimanyshau1601/mikalaimanyshau160100083/50304057-colourful-shopping-vector-flat-banner-for-your-business-web-sites-etc-quality-design-illustrations-e.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 400px;
+        }
+
+        button.btn-danger {
+            position: sticky;
+            top: 450px;
+            left: 1150px;
+            font-size: x-large;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            @*<a href="http://localhost:49837/Bakkal/Index">
+                    <button class="btn btn-danger active" type="submit">Bakkalla</button>
+                </a>*@
+        </div>
+        <br />
+        @* ELEMENT *@
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                @foreach (var item in ViewBag.bak)
+                {
+                    <div class="col-sm-4">
+                        <div class="card1" style="background-color:darkgrey">
+                            <img src="~/Resim/logo.jpeg" style="width:100%" />
+                            <div class="card-body">
+                                <h3 class="text-center">@item.BakkalAdi</h3>
+                                <h4 class="text-center">@item.SiparisUcreti ₺</h4>
+                                <p class="container-fluid"></p>
+                            </div>
+                            <a href="/MusteriBakkal/Getir/@item.Bakkal_Id" class="btn btn-info col-sm-4">Seç</a>
+                        </div><br /><br />
+
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</body>
+
+</html>
+

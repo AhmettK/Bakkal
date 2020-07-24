@@ -1,0 +1,78 @@
+﻿@model Bakkal.Models.Bakkallar
+@{
+    ViewBag.Title = "BHesap";
+    Layout = "~/Views/Shared/_Bakkal.cshtml";
+}
+
+<html>
+<head>
+    <style>
+        .login-page {
+            width: 360px;
+            padding: 8% 0 0;
+            margin: auto;
+        }
+
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+            .form input {
+                font-family: "Roboto", sans-serif;
+                outline: 0;
+                background: #f2f2f2;
+                width: 100%;
+                border: 0;
+                margin: 0 0 15px;
+                padding: 15px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+            .form button {
+                font-family: "Roboto", sans-serif;
+                text-transform: uppercase;
+                outline: 0;
+                background: #4CAF50;
+                width: 100%;
+                border: 0;
+                padding: 15px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <div class="form">
+                <form class="register-form">
+                    <h3>Profil Güncelle</h3>
+                    @Html.TextBoxFor(i => Model.BakkalMail, new { @PlaceHolder="Mail"})
+                    @Html.TextBoxFor(i => Model.BakkalAdi, new { @Placeholder = "Kullanıcı Adı" })
+                    @Html.PasswordFor(i => Model.BakkalSifresi, new { @Placeholder = "Şifre" })
+                    @Html.TextBoxFor(i => Model.SiparisUcreti, new { @Placeholder = "Sipariş Ücreti" })
+                    <input type="submit" value="Güncelle" style="background-color:powderblue" /><hr />
+                </form>
+            </div>
+        }
+        @using (Html.BeginForm("Logout", "Login", FormMethod.Post))
+        {
+            <input type="submit" value="Çıkış" class="form-control" style="position:absolute;left:643px;top:500px;z-index:1" />
+        }
+
+    </div>
+</body>
+</html>
+

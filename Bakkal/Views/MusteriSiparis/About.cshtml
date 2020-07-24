@@ -1,0 +1,116 @@
+﻿@using Bakkal.Models
+@model List<Siparis>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .courses-container {
+        }
+
+        .course {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            max-width: 100%;
+            margin: 20px;
+            overflow: hidden;
+            width: 700px;
+        }
+
+            .course h6 {
+                opacity: 0.6;
+                margin: 0;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .course h2 {
+                letter-spacing: 1px;
+                margin: 10px 0;
+            }
+
+        .course-preview {
+            background-color: #2A265F;
+            color: #fff;
+            padding: 30px;
+            max-width: 250px;
+        }
+
+            .course-preview a {
+                color: #fff;
+                display: inline-block;
+                font-size: 12px;
+                opacity: 0.6;
+                margin-top: 30px;
+                text-decoration: none;
+            }
+
+        .course-info {
+            padding: 30px;
+            position: relative;
+            width: 100%;
+        }
+
+        .course a {
+            background-color: #2A265F;
+            border: 0;
+            border-radius: 50px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="courses-container">
+        @using (Html.BeginForm())
+        {
+            foreach (var item in Model)
+            {
+        <div class="course">
+            <div class="course-preview">
+                @if (item.Kod==-1)
+                {
+                    <h6>Reddedildi</h6>
+                }
+                @if (item.Kod==2)
+                {
+                    <h6>Tamamlandı</h6>
+                }
+                <h2>@item.Para ₺</h2>
+            </div>
+            <div class="course-info">
+                <h6>@item.Tarih_Saat</h6>
+                <h2>@item.BakkalAdi</h2>
+                <a href="/MusteriSiparis/Details/@item.SiparisId" class="btn btn-danger col-sm-4">İncele</a><br />
+            </div>
+        </div>
+            }
+        }
+    </div>
+</body>
+</html>
+

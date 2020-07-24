@@ -1,0 +1,33 @@
+﻿@model Bakkal.Models.Urunler
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_Bakkal.cshtml";
+}
+
+<html>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("Guncelle", "BakkalUrunler", FormMethod.Post))
+        {
+        <div class="form-group">
+            @Html.HiddenFor(i=>Model.UrunId)
+            @Html.LabelFor(i => Model.UrunKategorisi)
+            @Html.DropDownListFor(i => Model.UrunKategorisi, (List<SelectListItem>)ViewBag.kat, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(i => Model.UrunAdi)
+            @Html.TextBoxFor(i=>Model.UrunAdi,new { @class="form-control"})
+            <br />
+            @Html.LabelFor(i=>Model.UrunFiyati)
+            @Html.TextBoxFor(i => Model.UrunFiyati, new { @class="form-control"})
+            <br />
+            @Html.LabelFor(i=>Model.Stok)
+            @Html.TextBoxFor(i=>Model.Stok, new { @class="form-control"})
+        </div>
+        <div>
+            <button class="btn btn-info">Güncelle</button>
+        </div>
+        }
+    </div>
+</body>
+</html>
+
